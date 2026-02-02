@@ -5,7 +5,15 @@
   # For static sites, no build command needed
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+
 # Redirect rules
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
