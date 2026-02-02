@@ -9,262 +9,87 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="chatbot.css">
-    <script src="chatbot.js"></script>
 </head>
-
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <div class="header-content">
-                <h1 class="name">SK Nasim Akhtar</h1>
-                <p class="tagline">AI/ML Engineer | Generative AI Specialist | MLOps Practitioner</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="icon">📍</span>
-                        <span>Noida, India</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">📞</span>
-                        <a href="tel:+918599849565">+91-8599849565</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">✉️</span>
-                        <a href="mailto:sknasimakhtar1997@gmail.com">sknasimakhtar1997@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">💼</span>
-                        <a href="https://linkedin.com/in/sknasimakhtar" target="_blank">LinkedIn</a>
-                    </div>
-                </div>
-            </div>
+    <!-- ChatGPT-style Chatbot Interface at Top -->
+    <div class="chatbot-top-container">
+        <div class="chatbot-top-header">
+            <h2>Ask Me Anything</h2>
+            <p class="chatbot-subtitle">AI Assistant - Learn about my background and experience</p>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages-top"></div>
+        <div class="chatbot-input-container-top">
+            <input type="text" id="chatbot-input" class="chatbot-input-top" placeholder="Ask me about my skills, experience, or projects..." autofocus>
+            <button id="chatbot-send" class="chatbot-send-top">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Minimalistic Content Below -->
+    <div class="content-container">
+        <header class="header-minimal">
+            <h1 class="name-minimal">SK Nasim Akhtar</h1>
+            <p class="tagline-minimal">AI/ML Engineer | Generative AI Specialist</p>
         </header>
 
-        <!-- Summary Section -->
-        <section class="section">
-            <h2 class="section-title">Summary</h2>
-            <p class="summary-text">
-                AI/ML Engineer specializing in Generative AI, NLP, and computer vision with hands-on experience in RAG, LLM fine-tuning, vector databases, and end-to-end pipeline development. Skilled in deploying optimized models across edge and cloud environments using Docker, TensorRT, and MLOps practices, with a strong focus on scalable, high-performance AI systems and real-world problem solving.
+        <section class="section-minimal">
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Location</span>
+                    <span class="info-value">Noida, India</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email</span>
+                    <a href="mailto:sknasimakhtar1997@gmail.com" class="info-value">sknasimakhtar1997@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Phone</span>
+                    <a href="tel:+918599849565" class="info-value">+91-8599849565</a>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">LinkedIn</span>
+                    <a href="https://linkedin.com/in/sknasimakhtar" target="_blank" class="info-value">Connect</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-minimal">
+            <h2 class="section-title-minimal">About</h2>
+            <p class="summary-minimal">
+                AI/ML Engineer specializing in Generative AI, NLP, and Computer Vision. Currently working as Assistant Manager - Generative AI Chatbot (RAG Platform) at Cube Highways. 4+ years of experience building production AI systems.
             </p>
         </section>
 
-        <!-- Technical Skills -->
-        <section class="section">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="skill-title">Languages</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">R</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">AI/ML</h3>
-                    <div class="skill-tags">
-                        <span class="tag">LLMs</span>
-                        <span class="tag">RAG</span>
-                        <span class="tag">LangChain</span>
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">OCR</span>
-                        <span class="tag">CV</span>
-                        <span class="tag">Transformers</span>
-                        <span class="tag">Model Optimization</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">Frameworks</h3>
-                    <div class="skill-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Hugging Face</span>
-                        <span class="tag">TensorRT</span>
-                        <span class="tag">Nvidia TAO Toolkit</span>
-                        <span class="tag">OpenCV</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">MLOps</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">MLflow</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">CI/CD</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">Databases</h3>
-                    <div class="skill-tags">
-                        <span class="tag">MySQL</span>
-                        <span class="tag">MongoDB</span>
-                        <span class="tag">NoSQL</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">Cloud & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="tag">AWS</span>
-                        <span class="tag">Azure</span>
-                        <span class="tag">GStreamer</span>
-                        <span class="tag">MQTT</span>
-                        <span class="tag">ROS2</span>
-                        <span class="tag">Power BI</span>
-                        <span class="tag">Tableau</span>
-                        <span class="tag">IBM SPSS</span>
-                    </div>
-                </div>
+        <section class="section-minimal">
+            <h2 class="section-title-minimal">Key Skills</h2>
+            <div class="skills-minimal">
+                <span class="skill-tag-minimal">Python</span>
+                <span class="skill-tag-minimal">LLMs</span>
+                <span class="skill-tag-minimal">RAG</span>
+                <span class="skill-tag-minimal">LangChain</span>
+                <span class="skill-tag-minimal">Deep Learning</span>
+                <span class="skill-tag-minimal">NLP</span>
+                <span class="skill-tag-minimal">Computer Vision</span>
+                <span class="skill-tag-minimal">MLOps</span>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section class="section">
-            <h2 class="section-title">Experience</h2>
-            
-            <!-- Cube Highways -->
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3 class="company-name">Cube Highways Technologies Pvt Ltd</h3>
-                </div>
-                
-                <div class="job">
-                    <div class="job-header">
-                        <h4 class="job-title">Assistant Manager - Generative AI Chatbot (RAG Platform)</h4>
-                        <span class="job-period">Apr'25 – Present</span>
-                    </div>
-                    <p class="job-location">Noida</p>
-                    <p class="job-tech">TechStack: Generative AI, LLMs, LangChain, Hugging Face, RAG, Docker</p>
-                    <ul class="job-responsibilities">
-                        <li>Built a domain-specific RAG-based Q&A assistant for highway engineering codes, including a PDF-to-knowledge pipeline for 60+ standards.</li>
-                        <li>Deployed optimized LLaMA-2-7B (quantized), achieving ~80% lower inference latency with improved retrieval accuracy using custom chunking & metadata strategies.</li>
-                        <li>Delivered a secure cross-team AI interface, enabling fast, validated access to technical information across engineering and operations teams.</li>
-                    </ul>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <h4 class="job-title">Senior Software Developer - Large-Scale ANPR Deployment</h4>
-                        <span class="job-period">Apr'24 – Mar'25</span>
-                    </div>
-                    <p class="job-location">Noida</p>
-                    <p class="job-tech">TechStack: OCR, CV, Nvidia TAO, TensorRT, Docker, MongoDB</p>
-                    <ul class="job-responsibilities">
-                        <li>Designed and deployed a production-scale ANPR system across 45 plazas and ~500 lane cameras, using deep learning-based detection and OCR pipelines optimized for edge and server environments.</li>
-                        <li>Implemented multi-stage inference, including plate localization, character segmentation, and recognition, improving consistency in diverse lighting, angles, and motion conditions.</li>
-                        <li>Built real-time data synchronization and quality monitoring workflows, enabling network-wide accuracy control and contributing to a measurable reduction in queue lengths.</li>
-                        <li>Custom-trained PaddleOCR with domain-specific datasets for Indian number plates, improving recognition accuracy across different states, fonts, and plate formats.</li>
-                    </ul>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <h4 class="job-title">Software Developer - Vision-Language Validation System</h4>
-                        <span class="job-period">Apr'23 – Mar'24</span>
-                    </div>
-                    <p class="job-location">Noida</p>
-                    <p class="job-tech">TechStack: Hugging Face Inference API, Vision-Language Models (BLIP/Florence-2), Python, OpenCV, REST APIs, JSON, Docker</p>
-                    <ul class="job-responsibilities">
-                        <li>Integrated classical computer vision outputs (detections, OCR text, bounding boxes) with Hugging Face image-to-text models to auto-generate descriptive prompts and semantic summaries, enabling automated validation of ANPR and object-detection pipelines.</li>
-                        <li>Built a vision-language consistency checker where Hugging Face captioning models cross-verify detected entities (vehicle class, plate text, color, violations) and highlight mismatches, improving model reliability and reducing false positives.</li>
-                        <li>Deployed the system as a Dockerized microservice exposing REST endpoints for downstream teams; enabled automated QC, dataset labeling acceleration, and model error analysis through AI-generated descriptions and discrepancy reports.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- VR Techniche -->
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3 class="company-name">VR Techniche Consultants Pvt Ltd</h3>
-                </div>
-                
-                <div class="job">
-                    <div class="job-header">
-                        <h4 class="job-title">Analyst (AI & Traffic) - Video Analytics & Intelligent Toll Operations</h4>
-                        <span class="job-period">Oct'21 – Mar'23</span>
-                    </div>
-                    <p class="job-location">Noida</p>
-                    <p class="job-tech">TechStack: Python, OpenCV, Darknet (YOLO), TensorRT, Docker, MySQL, REST APIs, Pandas, Linux, Git, Video Analytics Pipelines, Data Visualization</p>
-                    <ul class="job-responsibilities">
-                        <li>Enhanced ATCC & AVCC classification models using Darknet with TensorRT optimizations, improving vehicle detection/classification accuracy and enabling real-time performance on edge devices.</li>
-                        <li>Developed video-based incident detection pipelines (stopped vehicle, reverse driving, lane violation) integrated with revenue-leakage monitoring and automated alerts for toll operations.</li>
-                        <li>Built end-to-end backend systems including MySQL data pipelines, REST APIs, and real-time monitoring dashboards for KPIs (queue length, traffic volume, compliance, and revenue insights).</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section class="section">
-            <h2 class="section-title">Education</h2>
-            <div class="education-grid">
-                <div class="education-item">
-                    <div class="education-header">
-                        <h3 class="degree">M.Tech</h3>
-                        <span class="year">2021</span>
-                    </div>
-                    <p class="institute">Indian Institute of Technology, Kanpur</p>
-                    <p class="grade">CPI: 7.83</p>
-                </div>
-                <div class="education-item">
-                    <div class="education-header">
-                        <h3 class="degree">B.Tech</h3>
-                        <span class="year">2019</span>
-                    </div>
-                    <p class="institute">C. V. Raman College of Technology, Bhubaneswar</p>
-                    <p class="grade">CPI: 7.92</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interests Section -->
-        <section class="section">
-            <h2 class="section-title">Areas of Interest</h2>
-            <div class="interests">
-                <span class="interest-tag">Machine Learning</span>
-                <span class="interest-tag">Deep Learning</span>
-                <span class="interest-tag">Generative AI</span>
-                <span class="interest-tag">Statistical Modelling</span>
-                <span class="interest-tag">Model Optimisation</span>
-                <span class="interest-tag">Recommendation System</span>
-                <span class="interest-tag">Data Science</span>
-                <span class="interest-tag">Big Data</span>
-                <span class="interest-tag">End-to-End Development</span>
-                <span class="interest-tag">Nvidia Toolkit</span>
-                <span class="interest-tag">ML System Design</span>
-                <span class="interest-tag">Transformers</span>
-                <span class="interest-tag">Chatbots</span>
-                <span class="interest-tag">Cloud Platforms</span>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>© 2025 SK Nasim Akhtar | Portfolio Website</p>
+        <footer class="footer-minimal">
+            <p>© 2025 SK Nasim Akhtar</p>
         </footer>
     </div>
 
-    <!-- Chatbot Widget -->
-    <div id="chatbot-container" class="chatbot-container">
-        <div id="chatbot-window" class="chatbot-window">
-            <div class="chatbot-header">
-                <h3>Ask Me Anything</h3>
-                <button id="chatbot-close" class="chatbot-close">×</button>
-            </div>
-            <div id="chatbot-messages" class="chatbot-messages"></div>
-            <div class="chatbot-input-container">
-                <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Type your message...">
-                <button id="chatbot-send" class="chatbot-send">Send</button>
-            </div>
-        </div>
-        <button id="chatbot-toggle" class="chatbot-toggle">
-            <span>💬</span>
-        </button>
-    </div>
-
-    <script src="chatbot.js"></script>
+    <script src="chatbot-client-side.js"></script>
+    <script>
+        // Initialize chatbot for top interface
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatbot = new Chatbot();
+            chatbot.initializeTopInterface();
+        });
+    </script>
 </body>
 </html>
-
