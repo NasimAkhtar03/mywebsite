@@ -8,14 +8,23 @@
     <link rel="stylesheet" href="chatbot.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
     <!-- ChatGPT-style Chatbot Interface at Top -->
     <div class="chatbot-top-container">
         <div class="chatbot-top-header">
-            <h2>Ask Me Anything</h2>
-            <p class="chatbot-subtitle">AI Assistant - Learn about my background and experience</p>
+            <div class="header-content-wrapper">
+                <h2 class="animated-title">Ask Me Anything</h2>
+                <p class="chatbot-subtitle">AI Assistant - Learn about my background and experience</p>
+            </div>
         </div>
         <div id="chatbot-messages" class="chatbot-messages-top"></div>
         <div class="chatbot-input-container-top">
@@ -29,60 +38,96 @@
         </div>
     </div>
 
-    <!-- Minimalistic Content Below -->
+    <!-- Modern Interactive Content -->
     <div class="content-container">
-        <header class="header-minimal">
-            <h1 class="name-minimal">SK Nasim Akhtar</h1>
-            <p class="tagline-minimal">AI/ML Engineer | Generative AI Specialist</p>
+        <header class="header-modern">
+            <div class="name-wrapper">
+                <h1 class="name-modern" data-text="SK Nasim Akhtar">SK Nasim Akhtar</h1>
+                <div class="tagline-modern-wrapper">
+                    <p class="tagline-modern">AI/ML Engineer</p>
+                    <span class="separator">•</span>
+                    <p class="tagline-modern">Generative AI Specialist</p>
+                </div>
+            </div>
         </header>
 
-        <section class="section-minimal">
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label">Location</span>
-                    <span class="info-value">Noida, India</span>
+        <section class="section-modern">
+            <div class="info-grid-modern">
+                <div class="info-card-modern" data-tilt>
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <span class="info-label-modern">Location</span>
+                        <span class="info-value-modern">Noida, India</span>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Email</span>
-                    <a href="mailto:sknasimakhtar1997@gmail.com" class="info-value">sknasimakhtar1997@gmail.com</a>
+                <div class="info-card-modern" data-tilt>
+                    <div class="info-icon">✉️</div>
+                    <div class="info-content">
+                        <span class="info-label-modern">Email</span>
+                        <a href="mailto:sknasimakhtar1997@gmail.com" class="info-value-modern">sknasimakhtar1997@gmail.com</a>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Phone</span>
-                    <a href="tel:+918599849565" class="info-value">+91-8599849565</a>
+                <div class="info-card-modern" data-tilt>
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <span class="info-label-modern">Phone</span>
+                        <a href="tel:+918599849565" class="info-value-modern">+91-8599849565</a>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">LinkedIn</span>
-                    <a href="https://linkedin.com/in/sknasimakhtar" target="_blank" class="info-value">Connect</a>
+                <div class="info-card-modern" data-tilt>
+                    <div class="info-icon">💼</div>
+                    <div class="info-content">
+                        <span class="info-label-modern">LinkedIn</span>
+                        <a href="https://linkedin.com/in/sknasimakhtar" target="_blank" class="info-value-modern">Connect</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-minimal">
-            <h2 class="section-title-minimal">About</h2>
-            <p class="summary-minimal">
-                AI/ML Engineer specializing in Generative AI, NLP, and Computer Vision. Currently working as Assistant Manager - Generative AI Chatbot (RAG Platform) at Cube Highways. 4+ years of experience building production AI systems.
-            </p>
-        </section>
-
-        <section class="section-minimal">
-            <h2 class="section-title-minimal">Key Skills</h2>
-            <div class="skills-minimal">
-                <span class="skill-tag-minimal">Python</span>
-                <span class="skill-tag-minimal">LLMs</span>
-                <span class="skill-tag-minimal">RAG</span>
-                <span class="skill-tag-minimal">LangChain</span>
-                <span class="skill-tag-minimal">Deep Learning</span>
-                <span class="skill-tag-minimal">NLP</span>
-                <span class="skill-tag-minimal">Computer Vision</span>
-                <span class="skill-tag-minimal">MLOps</span>
+        <section class="section-modern">
+            <h2 class="section-title-modern">
+                <span class="title-line"></span>
+                <span class="title-text">About</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="about-card-modern">
+                <p class="summary-modern">
+                    AI/ML Engineer specializing in <span class="highlight">Generative AI</span>, <span class="highlight">NLP</span>, and <span class="highlight">Computer Vision</span>. Currently working as Assistant Manager - Generative AI Chatbot (RAG Platform) at Cube Highways. <span class="highlight">4+ years</span> of experience building production AI systems.
+                </p>
             </div>
         </section>
 
-        <footer class="footer-minimal">
+        <section class="section-modern">
+            <h2 class="section-title-modern">
+                <span class="title-line"></span>
+                <span class="title-text">Key Skills</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="skills-container-modern">
+                <div class="skill-chip-modern" data-skill="Python">Python</div>
+                <div class="skill-chip-modern" data-skill="LLMs">LLMs</div>
+                <div class="skill-chip-modern" data-skill="RAG">RAG</div>
+                <div class="skill-chip-modern" data-skill="LangChain">LangChain</div>
+                <div class="skill-chip-modern" data-skill="Deep Learning">Deep Learning</div>
+                <div class="skill-chip-modern" data-skill="NLP">NLP</div>
+                <div class="skill-chip-modern" data-skill="Computer Vision">Computer Vision</div>
+                <div class="skill-chip-modern" data-skill="MLOps">MLOps</div>
+            </div>
+        </section>
+
+        <footer class="footer-modern">
             <p>© 2025 SK Nasim Akhtar</p>
         </footer>
     </div>
 
+    <!-- Floating Action Elements -->
+    <div class="floating-elements">
+        <div class="floating-dot dot-1"></div>
+        <div class="floating-dot dot-2"></div>
+        <div class="floating-dot dot-3"></div>
+    </div>
+
     <script src="chatbot.js"></script>
+    <script src="interactive.js"></script>
 </body>
 </html>
