@@ -5,26 +5,39 @@ class Chatbot {
         this.messages = [];
         // Netlify Functions endpoint (absolute path; folder moves do NOT change this)
         this.apiEndpoint = '/.netlify/functions/chatbot';
+        this.fallbackApiEndpoint = '/chat';
+        this.isOpen = false;
         // Alternative: external API
         // this.apiEndpoint = 'https://your-api-url.com/chat';
     }
 
     initializeTopInterface() {
+        this.panel = document.getElementById('chatbot-panel');
+        this.toggleBtn = document.getElementById('chatbot-toggle');
+        this.closeBtn = document.getElementById('chatbot-close');
         this.messagesContainer = document.getElementById('chatbot-messages');
         this.input = document.getElementById('chatbot-input');
         this.sendBtn = document.getElementById('chatbot-send');
-        this.messagesContainer.setAttribute('aria-busy', 'false');
+        if (!this.panel || !this.toggleBtn || !this.closeBtn || !this.messagesContainer || !this.input || !this.sendBtn) return;
 
+        this.messagesContainer.setAttribute('aria-busy', 'false');
         this.attachEventListeners();
         this.addWelcomeMessage();
     }
 
     attachEventListeners() {
+        this.toggleBtn.addEventListener('click', () => this.openChat());
+        this.closeBtn.addEventListener('click', () => this.closeChat());
         this.sendBtn.addEventListener('click', () => this.sendMessage());
         this.input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 this.sendMessage();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.closeChat();
             }
         });
 
@@ -33,10 +46,33 @@ class Chatbot {
             chip.addEventListener('click', () => {
                 const prompt = chip.getAttribute('data-prompt');
                 if (!prompt) return;
+                this.openChat();
                 this.input.value = prompt;
                 this.sendMessage();
             });
         });
+    }
+
+    openChat() {
+        if (!this.panel || !this.input) return;
+        this.panel.classList.add('open');
+        this.panel.setAttribute('aria-hidden', 'false');
+        this.isOpen = true;
+        this.input.focus();
+    }
+
+    closeChat() {
+        if (!this.panel) return;
+        this.panel.classList.remove('open');
+        this.panel.setAttribute('aria-hidden', 'true');
+        this.isOpen = false;
+    }
+
+    askQuestion(question) {
+        if (!question) return;
+        this.openChat();
+        this.input.value = question;
+        this.sendMessage();
     }
 
     addWelcomeMessage() {
@@ -95,14 +131,24 @@ class Chatbot {
         this.showTyping();
 
         try {
-            const response = await fetch(this.apiEndpoint, {
+            const payload = JSON.stringify({
+                message,
+                conversation_history: this.messages.slice(-6)
+            });
+            let response = await fetch(this.apiEndpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    message,
-                    conversation_history: this.messages.slice(-6)
-                })
+                body: payload
             });
+
+            // Optional backend hook: if Netlify function is unavailable, try /chat.
+            if (!response.ok) {
+                response = await fetch(this.fallbackApiEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: payload
+                });
+            }
 
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
@@ -183,5 +229,6 @@ class Chatbot {
 document.addEventListener('DOMContentLoaded', () => {
     const chatbot = new Chatbot();
     chatbot.initializeTopInterface();
+    window.portfolioChatbot = chatbot;
 });
 

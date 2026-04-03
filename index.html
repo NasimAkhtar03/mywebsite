@@ -56,41 +56,19 @@
         <div class="gradient-orb orb-3"></div>
     </div>
 
-    <!-- ChatGPT-style Chatbot Interface at Top -->
-    <div class="chatbot-top-container">
-        <div class="chatbot-top-header">
-            <div class="header-content-wrapper">
-                <h2 class="animated-title">Ask Me Anything</h2>
-                <p class="chatbot-subtitle">AI Assistant - Learn about my background and experience</p>
-            </div>
-        </div>
-        <div id="chatbot-messages" class="chatbot-messages-top" role="log" aria-live="polite" aria-label="Conversation messages"></div>
-        <div class="chatbot-input-container-top">
-            <label for="chatbot-input" class="sr-only">Ask a question about SK Nasim Akhtar</label>
-            <input type="text" id="chatbot-input" class="chatbot-input-top" placeholder="Ask me about my skills, experience, or projects..." autocomplete="off" autofocus>
-            <button id="chatbot-send" class="chatbot-send-top" type="button" aria-label="Send message">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-            </button>
-        </div>
-        <div class="chatbot-suggestions" aria-label="Suggested questions">
-            <button type="button" class="suggestion-chip" data-prompt="What AI projects has Nasim delivered?">AI Projects</button>
-            <button type="button" class="suggestion-chip" data-prompt="What is Nasim's experience with RAG and LLMs?">RAG & LLM Experience</button>
-            <button type="button" class="suggestion-chip" data-prompt="How can I contact Nasim for opportunities?">Contact</button>
-        </div>
-    </div>
-
     <!-- Modern Interactive Content -->
     <main id="main-content" class="content-container">
         <header class="header-modern">
             <div class="name-wrapper">
-                <h1 class="name-modern" data-text="SK Nasim Akhtar">SK Nasim Akhtar</h1>
+                <h1 class="name-modern hero-typing" id="hero-typing" data-text="Building Scalable AI Systems | Generative AI | Computer Vision" data-fulltext="Building Scalable AI Systems | Generative AI | Computer Vision">Building Scalable AI Systems | Generative AI | Computer Vision</h1>
                 <div class="tagline-modern-wrapper">
-                    <p class="tagline-modern">AI/ML Engineer</p>
+                    <p class="tagline-modern">SK Nasim Akhtar</p>
                     <span class="separator">•</span>
-                    <p class="tagline-modern">Generative AI Specialist</p>
+                    <p class="tagline-modern">AI/ML Engineer</p>
+                </div>
+                <div class="hero-actions">
+                    <a href="#projects-section" class="cta-btn cta-primary">View Projects</a>
+                    <a href="#live-demos" class="cta-btn cta-secondary">Try Live Demo</a>
                 </div>
             </div>
         </header>
@@ -144,43 +122,153 @@
         <section class="section-modern">
             <h2 class="section-title-modern">
                 <span class="title-line"></span>
-                <span class="title-text">Key Skills</span>
+                <span class="title-text">Experience</span>
                 <span class="title-line"></span>
             </h2>
-            <div class="skills-container-modern">
-                <div class="skill-chip-modern" data-skill="Python">Python</div>
-                <div class="skill-chip-modern" data-skill="LLMs">LLMs</div>
-                <div class="skill-chip-modern" data-skill="RAG">RAG</div>
-                <div class="skill-chip-modern" data-skill="LangChain">LangChain</div>
-                <div class="skill-chip-modern" data-skill="Deep Learning">Deep Learning</div>
-                <div class="skill-chip-modern" data-skill="NLP">NLP</div>
-                <div class="skill-chip-modern" data-skill="Computer Vision">Computer Vision</div>
-                <div class="skill-chip-modern" data-skill="MLOps">MLOps</div>
+            <div class="experience-timeline">
+                <article class="experience-item">
+                    <h3>Assistant Manager - Generative AI Chatbot (RAG Platform)</h3>
+                    <p class="experience-company">Cube Highways</p>
+                    <ul class="experience-points">
+                        <li>Built scalable GenAI workflows for enterprise knowledge use-cases.</li>
+                        <li>Optimized inference and retrieval stack, delivering <strong>80% latency reduction</strong>.</li>
+                        <li>Supported production vision systems across <strong>500+ cameras deployed</strong>.</li>
+                    </ul>
+                </article>
             </div>
         </section>
 
         <section class="section-modern">
             <h2 class="section-title-modern">
                 <span class="title-line"></span>
-                <span class="title-text">Featured Projects</span>
+                <span class="title-text">Key Skills</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="skills-groups">
+                <div class="skill-group-card">
+                    <h3>AI/ML</h3>
+                    <div class="skills-container-modern">
+                        <div class="skill-chip-modern" data-skill="LLMs">LLMs</div>
+                        <div class="skill-chip-modern" data-skill="RAG">RAG</div>
+                        <div class="skill-chip-modern" data-skill="NLP">NLP</div>
+                        <div class="skill-chip-modern" data-skill="Computer Vision">Computer Vision</div>
+                        <div class="skill-chip-modern" data-skill="Deep Learning">Deep Learning</div>
+                    </div>
+                </div>
+                <div class="skill-group-card">
+                    <h3>Backend</h3>
+                    <div class="skills-container-modern">
+                        <div class="skill-chip-modern" data-skill="Python">Python</div>
+                        <div class="skill-chip-modern" data-skill="FastAPI">FastAPI</div>
+                        <div class="skill-chip-modern" data-skill="Flask">Flask</div>
+                        <div class="skill-chip-modern" data-skill="REST APIs">REST APIs</div>
+                    </div>
+                </div>
+                <div class="skill-group-card">
+                    <h3>MLOps</h3>
+                    <div class="skills-container-modern">
+                        <div class="skill-chip-modern" data-skill="Docker">Docker</div>
+                        <div class="skill-chip-modern" data-skill="Model Deployment">Model Deployment</div>
+                        <div class="skill-chip-modern" data-skill="Monitoring">Monitoring</div>
+                        <div class="skill-chip-modern" data-skill="CI/CD">CI/CD</div>
+                    </div>
+                </div>
+                <div class="skill-group-card">
+                    <h3>Tools</h3>
+                    <div class="skills-container-modern">
+                        <div class="skill-chip-modern" data-skill="LangChain">LangChain</div>
+                        <div class="skill-chip-modern" data-skill="OpenCV">OpenCV</div>
+                        <div class="skill-chip-modern" data-skill="Git">Git</div>
+                        <div class="skill-chip-modern" data-skill="Linux">Linux</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects-section" class="section-modern">
+            <h2 class="section-title-modern">
+                <span class="title-line"></span>
+                <span class="title-text">Projects</span>
                 <span class="title-line"></span>
             </h2>
             <div class="projects-grid-modern">
                 <article class="project-card-modern">
-                    <h3>Enterprise RAG Chatbot Platform</h3>
-                    <p>Built and scaled a production retrieval-augmented chatbot for business workflows, improving response quality and internal knowledge access.</p>
-                    <span class="project-tags">RAG • LLMs • LangChain • Python</span>
+                    <h3>RAG AI Assistant</h3>
+                    <p>Production assistant for enterprise knowledge retrieval with grounded answers, faster support, and lower hallucination rates.</p>
+                    <div class="project-badges">
+                        <span class="project-tag-badge">Python</span>
+                        <span class="project-tag-badge">RAG</span>
+                        <span class="project-tag-badge">LLMs</span>
+                        <span class="project-tag-badge">LangChain</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-btn project-details-btn" data-project="RAG AI Assistant">View Details</button>
+                        <a href="#live-demos" class="project-btn project-demo-btn">Try Demo</a>
+                    </div>
                 </article>
                 <article class="project-card-modern">
-                    <h3>Document Intelligence Pipeline</h3>
-                    <p>Designed NLP pipelines for extraction and summarization from unstructured documents to support faster operations and decision making.</p>
-                    <span class="project-tags">NLP • OCR • Transformers • MLOps</span>
+                    <h3>ANPR System</h3>
+                    <p>Automatic number plate recognition pipeline for real-time vehicle tracking with high-throughput camera stream processing.</p>
+                    <div class="project-badges">
+                        <span class="project-tag-badge">Computer Vision</span>
+                        <span class="project-tag-badge">OpenCV</span>
+                        <span class="project-tag-badge">OCR</span>
+                        <span class="project-tag-badge">Python</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-btn project-details-btn" data-project="ANPR System">View Details</button>
+                        <a href="#live-demos" class="project-btn project-demo-btn">Try Demo</a>
+                    </div>
                 </article>
                 <article class="project-card-modern">
-                    <h3>Computer Vision Automation</h3>
-                    <p>Delivered CV models for real-world analysis tasks with production deployment focus, monitoring, and iterative model improvements.</p>
-                    <span class="project-tags">Computer Vision • Deep Learning • Deployment</span>
+                    <h3>Vision-Language Validation</h3>
+                    <p>Built multimodal validation workflows to verify visual events against natural-language rules for safer automated decisions.</p>
+                    <div class="project-badges">
+                        <span class="project-tag-badge">VLM</span>
+                        <span class="project-tag-badge">Prompt Engineering</span>
+                        <span class="project-tag-badge">Evaluation</span>
+                        <span class="project-tag-badge">API Integration</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-btn project-details-btn" data-project="Vision-Language Validation">View Details</button>
+                        <a href="#live-demos" class="project-btn project-demo-btn">Try Demo</a>
+                    </div>
                 </article>
+                <article class="project-card-modern">
+                    <h3>Video Analytics</h3>
+                    <p>Deployed video intelligence pipelines for surveillance and operations with edge-friendly inference and event summarization.</p>
+                    <div class="project-badges">
+                        <span class="project-tag-badge">Video Processing</span>
+                        <span class="project-tag-badge">Deep Learning</span>
+                        <span class="project-tag-badge">MLOps</span>
+                        <span class="project-tag-badge">Monitoring</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-btn project-details-btn" data-project="Video Analytics">View Details</button>
+                        <a href="#live-demos" class="project-btn project-demo-btn">Try Demo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="live-demos" class="section-modern">
+            <h2 class="section-title-modern">
+                <span class="title-line"></span>
+                <span class="title-text">Live AI Demos</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="demo-card-modern">
+                <div id="demo-dropzone" class="demo-dropzone" tabindex="0" role="button" aria-label="Upload an image for inference">
+                    <input type="file" id="demo-file-input" accept="image/*" class="sr-only">
+                    <p><strong>Drag & drop an image</strong> or click to browse</p>
+                    <span id="demo-file-name">No file selected</span>
+                </div>
+                <button id="run-inference-btn" type="button" class="cta-btn cta-primary">Run Inference</button>
+                <div id="demo-output" class="demo-output">
+                    <p class="demo-output-title">Output Preview</p>
+                    <img id="demo-preview-image" class="demo-preview-image" alt="Inference input preview">
+                    <p id="demo-result-text">Upload an image and run inference to see output.</p>
+                </div>
             </div>
         </section>
 
@@ -199,6 +287,40 @@
             <p>© 2026 SK Nasim Akhtar</p>
         </footer>
     </main>
+
+    <div class="chatbot-fab-container" aria-live="polite">
+        <button id="chatbot-toggle" class="chatbot-fab" type="button" aria-label="Open AI assistant">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+
+        <div id="chatbot-panel" class="chatbot-top-container" aria-hidden="true">
+            <div class="chatbot-top-header">
+                <div class="header-content-wrapper">
+                    <h2 class="animated-title">AI Assistant</h2>
+                    <p class="chatbot-subtitle">Ask about projects, experience, and contact</p>
+                </div>
+                <button id="chatbot-close" type="button" class="chatbot-close-btn" aria-label="Close chat">×</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages-top" role="log" aria-live="polite" aria-label="Conversation messages"></div>
+            <div class="chatbot-input-container-top">
+                <label for="chatbot-input" class="sr-only">Ask a question about SK Nasim Akhtar</label>
+                <input type="text" id="chatbot-input" class="chatbot-input-top" placeholder="Ask me about skills, projects, or experience..." autocomplete="off">
+                <button id="chatbot-send" class="chatbot-send-top" type="button" aria-label="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+            <div class="chatbot-suggestions" aria-label="Suggested questions">
+                <button type="button" class="suggestion-chip" data-prompt="What AI projects has Nasim delivered?">AI Projects</button>
+                <button type="button" class="suggestion-chip" data-prompt="What is Nasim's experience with RAG and LLMs?">RAG & LLM Experience</button>
+                <button type="button" class="suggestion-chip" data-prompt="How can I contact Nasim for opportunities?">Contact</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating Action Elements -->
     <div class="floating-elements" aria-hidden="true">

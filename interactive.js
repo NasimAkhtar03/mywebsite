@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.section-modern, .about-card-modern');
     const tiltCards = document.querySelectorAll('[data-tilt]');
     const orbs = document.querySelectorAll('.gradient-orb');
+    const heroTyping = document.getElementById('hero-typing');
 
     if (!prefersReducedMotion && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries, obs) => {
@@ -42,6 +43,25 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach((section) => {
             section.style.opacity = '1';
         });
+    }
+
+    if (heroTyping) {
+        const fullText = heroTyping.getAttribute('data-fulltext') || heroTyping.textContent || '';
+        if (prefersReducedMotion) {
+            heroTyping.textContent = fullText;
+            heroTyping.setAttribute('data-text', fullText);
+        } else {
+            let idx = 0;
+            heroTyping.textContent = '';
+            const typeTimer = window.setInterval(() => {
+                heroTyping.textContent += fullText.charAt(idx);
+                idx += 1;
+                if (idx >= fullText.length) {
+                    window.clearInterval(typeTimer);
+                    heroTyping.setAttribute('data-text', fullText);
+                }
+            }, 28);
+        }
     }
 
     skillChips.forEach((chip, index) => {
@@ -128,6 +148,107 @@ document.addEventListener('DOMContentLoaded', () => {
             this.style.transition = 'all 0.3s ease';
         });
     });
+
+    const projectDetailButtons = document.querySelectorAll('.project-details-btn');
+    projectDetailButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const projectName = button.getAttribute('data-project');
+            if (!projectName) return;
+
+            if (window.portfolioChatbot && typeof window.portfolioChatbot.askQuestion === 'function') {
+                window.portfolioChatbot.askQuestion(`Tell me more about the ${projectName} project and its business impact.`);
+            }
+        });
+    });
+
+    const dropzone = document.getElementById('demo-dropzone');
+    const fileInput = document.getElementById('demo-file-input');
+    const fileNameEl = document.getElementById('demo-file-name');
+    const runInferenceBtn = document.getElementById('run-inference-btn');
+    const resultTextEl = document.getElementById('demo-result-text');
+    const previewImageEl = document.getElementById('demo-preview-image');
+
+    let selectedFile = null;
+
+    const updateSelectedFile = (file) => {
+        selectedFile = file;
+        fileNameEl.textContent = file ? file.name : 'No file selected';
+        if (file && previewImageEl) {
+            previewImageEl.src = URL.createObjectURL(file);
+            previewImageEl.style.display = 'block';
+        }
+    };
+
+    if (dropzone && fileInput && runInferenceBtn && resultTextEl && previewImageEl && fileNameEl) {
+        dropzone.addEventListener('click', () => fileInput.click());
+        dropzone.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                fileInput.click();
+            }
+        });
+
+        fileInput.addEventListener('change', (event) => {
+            const target = event.target;
+            if (!(target instanceof HTMLInputElement) || !target.files || target.files.length === 0) return;
+            updateSelectedFile(target.files[0]);
+            resultTextEl.textContent = 'Image ready. Click "Run Inference" to process.';
+        });
+
+        dropzone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropzone.classList.add('drag-over');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('drag-over');
+        });
+
+        dropzone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dropzone.classList.remove('drag-over');
+            if (!event.dataTransfer || event.dataTransfer.files.length === 0) return;
+            updateSelectedFile(event.dataTransfer.files[0]);
+            resultTextEl.textContent = 'Image ready. Click "Run Inference" to process.';
+        });
+
+        runInferenceBtn.addEventListener('click', async () => {
+            if (!selectedFile) {
+                resultTextEl.textContent = 'Please upload an image first.';
+                return;
+            }
+
+            runInferenceBtn.setAttribute('disabled', 'true');
+            runInferenceBtn.textContent = 'Running...';
+
+            const formData = new FormData();
+            formData.append('image', selectedFile);
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const prediction = await response.json();
+                const label = prediction.label || prediction.class || 'Prediction complete';
+                const confidence = prediction.confidence || prediction.score || null;
+                resultTextEl.textContent = confidence ? `Result: ${label} (${Math.round(Number(confidence) * 100)}% confidence)` : `Result: ${label}`;
+            } catch (_error) {
+                const mockLabels = ['Vehicle Detected', 'License Plate Found', 'Anomaly Noted', 'Scene Validated'];
+                const randomLabel = mockLabels[Math.floor(Math.random() * mockLabels.length)];
+                const confidence = (0.84 + Math.random() * 0.12).toFixed(2);
+                resultTextEl.textContent = `Mock Result: ${randomLabel} (${confidence} confidence). Backend hook ready for /predict.`;
+            } finally {
+                runInferenceBtn.removeAttribute('disabled');
+                runInferenceBtn.textContent = 'Run Inference';
+            }
+        });
+    }
 });
 
 window.addEventListener('load', () => {

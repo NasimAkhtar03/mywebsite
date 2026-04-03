@@ -168,6 +168,27 @@ body {
     opacity: 0.5;
 }
 
+.hero-typing {
+    min-height: 1.4em;
+}
+
+.hero-typing::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 8px;
+    vertical-align: -0.1em;
+    background: var(--primary-light);
+    animation: blinkCaret 1s step-end infinite;
+}
+
+@keyframes blinkCaret {
+    50% {
+        opacity: 0;
+    }
+}
+
 @keyframes gradientShift {
     0%, 100% {
         background-position: 0% 50%;
@@ -182,6 +203,14 @@ body {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
@@ -365,6 +394,28 @@ input:focus-visible,
     justify-content: center;
 }
 
+.skills-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.skill-group-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.skill-group-card h3 {
+    margin-bottom: 12px;
+    color: var(--primary-light);
+}
+
+.skill-group-card .skills-container-modern {
+    justify-content: flex-start;
+}
+
 .skill-chip-modern {
     padding: 12px 24px;
     background: var(--bg-card);
@@ -446,6 +497,143 @@ input:focus-visible,
     color: var(--primary-light);
     font-size: 0.88rem;
     font-weight: 600;
+}
+
+.project-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.project-tag-badge {
+    font-size: 0.78rem;
+    border: 1px solid rgba(129, 140, 248, 0.45);
+    background: rgba(99, 102, 241, 0.18);
+    color: #d5d6ff;
+    border-radius: 999px;
+    padding: 5px 10px;
+}
+
+.project-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.project-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 9px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.project-details-btn {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.project-demo-btn {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-btn:hover {
+    transform: translateY(-1px);
+}
+
+.experience-timeline {
+    border-left: 2px solid rgba(99, 102, 241, 0.4);
+    margin-left: 8px;
+    padding-left: 20px;
+}
+
+.experience-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 22px;
+    position: relative;
+}
+
+.experience-item::before {
+    content: "";
+    position: absolute;
+    left: -28px;
+    top: 30px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.experience-company {
+    color: var(--primary-light);
+    margin-bottom: 10px;
+}
+
+.experience-points {
+    color: var(--text-secondary);
+    padding-left: 18px;
+}
+
+.experience-points li {
+    margin-bottom: 8px;
+}
+
+.demo-card-modern {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 24px;
+    display: grid;
+    gap: 14px;
+}
+
+.demo-dropzone {
+    border: 1.5px dashed rgba(129, 140, 248, 0.6);
+    border-radius: 14px;
+    padding: 28px;
+    text-align: center;
+    background: rgba(99, 102, 241, 0.08);
+    cursor: pointer;
+}
+
+.demo-dropzone.drag-over {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(129, 140, 248, 0.95);
+}
+
+#demo-file-name {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.demo-output {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.demo-output-title {
+    color: var(--primary-light);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.demo-preview-image {
+    width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 10px;
+    display: none;
+    margin-bottom: 10px;
 }
 
 .cta-card-modern {
@@ -605,6 +793,10 @@ input:focus-visible,
 
     .cta-card-modern {
         padding: 22px;
+    }
+
+    .hero-actions {
+        width: 100%;
     }
 }
 
