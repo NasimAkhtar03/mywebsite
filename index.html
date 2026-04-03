@@ -3,16 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of SK Nasim Akhtar, AI/ML Engineer specializing in Generative AI, NLP, Computer Vision, and production RAG systems.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta property="og:title" content="SK Nasim Akhtar - AI/ML Engineer">
+    <meta property="og:description" content="AI/ML Engineer and Generative AI Specialist with 4+ years of experience building production systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mynasim.in/">
+    <meta property="og:image" content="https://mynasim.in/og-image.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SK Nasim Akhtar - AI/ML Engineer">
+    <meta name="twitter:description" content="Explore skills, experience, and projects in Generative AI, NLP, and Computer Vision.">
+    <meta name="twitter:image" content="https://mynasim.in/og-image.svg">
+    <link rel="canonical" href="https://mynasim.in/">
     <title>SK Nasim Akhtar - AI/ML Engineer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chatbot.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "SK Nasim Akhtar",
+            "jobTitle": "AI/ML Engineer",
+            "description": "AI/ML Engineer specializing in Generative AI, NLP, and Computer Vision.",
+            "email": "mailto:sknasimakhtar1997@gmail.com",
+            "telephone": "+91-8599849565",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Noida",
+                "addressCountry": "IN"
+            },
+            "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "IIT Kanpur"
+            },
+            "sameAs": [
+                "https://linkedin.com/in/sknasimakhtar"
+            ],
+            "url": "https://mynasim.in/"
+        }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Animated Background -->
-    <div class="animated-bg">
+    <div class="animated-bg" aria-hidden="true">
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
         <div class="gradient-orb orb-3"></div>
@@ -26,20 +64,26 @@
                 <p class="chatbot-subtitle">AI Assistant - Learn about my background and experience</p>
             </div>
         </div>
-        <div id="chatbot-messages" class="chatbot-messages-top"></div>
+        <div id="chatbot-messages" class="chatbot-messages-top" role="log" aria-live="polite" aria-label="Conversation messages"></div>
         <div class="chatbot-input-container-top">
-            <input type="text" id="chatbot-input" class="chatbot-input-top" placeholder="Ask me about my skills, experience, or projects..." autofocus>
-            <button id="chatbot-send" class="chatbot-send-top">
+            <label for="chatbot-input" class="sr-only">Ask a question about SK Nasim Akhtar</label>
+            <input type="text" id="chatbot-input" class="chatbot-input-top" placeholder="Ask me about my skills, experience, or projects..." autocomplete="off" autofocus>
+            <button id="chatbot-send" class="chatbot-send-top" type="button" aria-label="Send message">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
             </button>
         </div>
+        <div class="chatbot-suggestions" aria-label="Suggested questions">
+            <button type="button" class="suggestion-chip" data-prompt="What AI projects has Nasim delivered?">AI Projects</button>
+            <button type="button" class="suggestion-chip" data-prompt="What is Nasim's experience with RAG and LLMs?">RAG & LLM Experience</button>
+            <button type="button" class="suggestion-chip" data-prompt="How can I contact Nasim for opportunities?">Contact</button>
+        </div>
     </div>
 
     <!-- Modern Interactive Content -->
-    <div class="content-container">
+    <main id="main-content" class="content-container">
         <header class="header-modern">
             <div class="name-wrapper">
                 <h1 class="name-modern" data-text="SK Nasim Akhtar">SK Nasim Akhtar</h1>
@@ -54,31 +98,31 @@
         <section class="section-modern">
             <div class="info-grid-modern">
                 <div class="info-card-modern" data-tilt>
-                    <div class="info-icon">📍</div>
+                    <div class="info-icon" aria-hidden="true">📍</div>
                     <div class="info-content">
                         <span class="info-label-modern">Location</span>
                         <span class="info-value-modern">Noida, India</span>
                     </div>
                 </div>
                 <div class="info-card-modern" data-tilt>
-                    <div class="info-icon">✉️</div>
+                    <div class="info-icon" aria-hidden="true">✉️</div>
                     <div class="info-content">
                         <span class="info-label-modern">Email</span>
                         <a href="mailto:sknasimakhtar1997@gmail.com" class="info-value-modern">sknasimakhtar1997@gmail.com</a>
                     </div>
                 </div>
                 <div class="info-card-modern" data-tilt>
-                    <div class="info-icon">📞</div>
+                    <div class="info-icon" aria-hidden="true">📞</div>
                     <div class="info-content">
                         <span class="info-label-modern">Phone</span>
                         <a href="tel:+918599849565" class="info-value-modern">+91-8599849565</a>
                     </div>
                 </div>
                 <div class="info-card-modern" data-tilt>
-                    <div class="info-icon">💼</div>
+                    <div class="info-icon" aria-hidden="true">💼</div>
                     <div class="info-content">
                         <span class="info-label-modern">LinkedIn</span>
-                        <a href="https://linkedin.com/in/sknasimakhtar" target="_blank" class="info-value-modern">Connect</a>
+                        <a href="https://linkedin.com/in/sknasimakhtar" target="_blank" rel="noopener noreferrer" class="info-value-modern">Connect</a>
                     </div>
                 </div>
             </div>
@@ -115,13 +159,49 @@
             </div>
         </section>
 
+        <section class="section-modern">
+            <h2 class="section-title-modern">
+                <span class="title-line"></span>
+                <span class="title-text">Featured Projects</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="projects-grid-modern">
+                <article class="project-card-modern">
+                    <h3>Enterprise RAG Chatbot Platform</h3>
+                    <p>Built and scaled a production retrieval-augmented chatbot for business workflows, improving response quality and internal knowledge access.</p>
+                    <span class="project-tags">RAG • LLMs • LangChain • Python</span>
+                </article>
+                <article class="project-card-modern">
+                    <h3>Document Intelligence Pipeline</h3>
+                    <p>Designed NLP pipelines for extraction and summarization from unstructured documents to support faster operations and decision making.</p>
+                    <span class="project-tags">NLP • OCR • Transformers • MLOps</span>
+                </article>
+                <article class="project-card-modern">
+                    <h3>Computer Vision Automation</h3>
+                    <p>Delivered CV models for real-world analysis tasks with production deployment focus, monitoring, and iterative model improvements.</p>
+                    <span class="project-tags">Computer Vision • Deep Learning • Deployment</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-modern">
+            <div class="cta-card-modern">
+                <h2>Open to AI/ML leadership and high-impact engineering roles</h2>
+                <p>If you are hiring or want to collaborate on AI products, let us connect.</p>
+                <div class="cta-actions">
+                    <a href="mailto:sknasimakhtar1997@gmail.com" class="cta-btn cta-primary">Email Me</a>
+                    <a href="https://linkedin.com/in/sknasimakhtar" target="_blank" rel="noopener noreferrer" class="cta-btn cta-secondary">Connect on LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
         <footer class="footer-modern">
-            <p>© 2025 SK Nasim Akhtar</p>
+            <p>© 2026 SK Nasim Akhtar</p>
         </footer>
-    </div>
+    </main>
 
     <!-- Floating Action Elements -->
-    <div class="floating-elements">
+    <div class="floating-elements" aria-hidden="true">
         <div class="floating-dot dot-1"></div>
         <div class="floating-dot dot-2"></div>
         <div class="floating-dot dot-3"></div>

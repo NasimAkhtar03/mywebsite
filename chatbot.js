@@ -13,6 +13,7 @@ class Chatbot {
         this.messagesContainer = document.getElementById('chatbot-messages');
         this.input = document.getElementById('chatbot-input');
         this.sendBtn = document.getElementById('chatbot-send');
+        this.messagesContainer.setAttribute('aria-busy', 'false');
 
         this.attachEventListeners();
         this.addWelcomeMessage();
@@ -25,6 +26,16 @@ class Chatbot {
                 e.preventDefault();
                 this.sendMessage();
             }
+        });
+
+        const suggestionChips = document.querySelectorAll('.suggestion-chip');
+        suggestionChips.forEach((chip) => {
+            chip.addEventListener('click', () => {
+                const prompt = chip.getAttribute('data-prompt');
+                if (!prompt) return;
+                this.input.value = prompt;
+                this.sendMessage();
+            });
         });
     }
 
@@ -51,6 +62,8 @@ class Chatbot {
         const typingDiv = document.createElement('div');
         typingDiv.className = 'chatbot-message bot';
         typingDiv.id = 'typing-indicator';
+        typingDiv.setAttribute('role', 'status');
+        typingDiv.setAttribute('aria-label', 'Assistant is typing');
 
         const typingContent = document.createElement('div');
         typingContent.className = 'chatbot-typing';
@@ -77,6 +90,8 @@ class Chatbot {
         this.addMessage('user', message);
         this.input.value = '';
         this.sendBtn.disabled = true;
+        this.sendBtn.setAttribute('aria-disabled', 'true');
+        this.messagesContainer.setAttribute('aria-busy', 'true');
         this.showTyping();
 
         try {
@@ -101,6 +116,8 @@ class Chatbot {
             this.addMessage('bot', this.generateLocalResponse(message));
         } finally {
             this.sendBtn.disabled = false;
+            this.sendBtn.setAttribute('aria-disabled', 'false');
+            this.messagesContainer.setAttribute('aria-busy', 'false');
             this.input.focus();
         }
     }
@@ -118,7 +135,12 @@ class Chatbot {
             skills: 'Python, LLMs, RAG, LangChain, Deep Learning, NLP, Computer Vision',
             currentRole: 'Assistant Manager - Generative AI Chatbot (RAG Platform) at Cube Highways',
             experience: '4+ years',
-            education: 'M.Tech from IIT Kanpur'
+            education: 'M.Tech from IIT Kanpur',
+            projects: [
+                'Enterprise RAG chatbot platform for business workflows',
+                'Document intelligence pipeline for extraction and summarization',
+                'Computer vision automation systems for production use-cases'
+            ]
         };
 
         if (messageLower.includes('hi') || messageLower.includes('hello') || messageLower.includes('hey')) {
@@ -145,7 +167,15 @@ class Chatbot {
             return `${info.name} is based in ${info.location}.`;
         }
 
-        return `I can answer about ${info.name}'s skills, experience, education, location, or contact. Try asking “What are your skills?”`;
+        if (messageLower.includes('project') || messageLower.includes('portfolio') || messageLower.includes('delivered') || messageLower.includes('built')) {
+            return `${info.name}'s recent work includes: ${info.projects.join('; ')}.`;
+        }
+
+        if (messageLower.includes('hire') || messageLower.includes('opportunity') || messageLower.includes('available') || messageLower.includes('open to')) {
+            return `${info.name} is open to high-impact AI/ML opportunities. Reach out at ${info.email} or on LinkedIn: linkedin.com/in/sknasimakhtar`;
+        }
+
+        return `I can answer about ${info.name}'s skills, experience, projects, education, location, and contact. Try asking “What AI projects has Nasim delivered?”`;
     }
 }
 

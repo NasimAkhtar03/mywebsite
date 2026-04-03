@@ -31,6 +31,11 @@ function generateSimpleResponse(userMessage) {
     currentRole: "Assistant Manager - Generative AI Chatbot (RAG Platform) at Cube Highways",
     experience: "4+ years",
     education: "M.Tech from IIT Kanpur",
+    projects: [
+      "Enterprise RAG chatbot platform for business workflows",
+      "Document intelligence pipeline for extraction and summarization",
+      "Computer vision automation systems for production use-cases",
+    ],
   };
 
   if (["hi", "hello", "hey"].some((w) => msg.includes(w))) {
@@ -51,8 +56,14 @@ function generateSimpleResponse(userMessage) {
   if (["location", "where", "based"].some((w) => msg.includes(w))) {
     return `${info.name} is based in ${info.location}.`;
   }
+  if (["project", "portfolio", "delivered", "built"].some((w) => msg.includes(w))) {
+    return `${info.name}'s recent work includes: ${info.projects.join("; ")}.`;
+  }
+  if (["hire", "opportunity", "available", "open to"].some((w) => msg.includes(w))) {
+    return `${info.name} is open to high-impact AI/ML opportunities. Reach out at ${info.email} or on LinkedIn: linkedin.com/in/sknasimakhtar`;
+  }
 
-  return `I can answer about ${info.name}'s skills, experience, education, location, or contact. Try asking “What are your skills?”`;
+  return `I can answer about ${info.name}'s skills, experience, projects, education, location, and contact. Try asking “What AI projects has Nasim delivered?”`;
 }
 
 exports.handler = async (event) => {
