@@ -68,7 +68,7 @@
                 </div>
                 <div class="hero-actions">
                     <a href="#projects-section" class="cta-btn cta-primary">View Projects</a>
-                    <a href="#live-demos" class="cta-btn cta-secondary">Try Live Demo</a>
+                    <a href="#tools-section" class="cta-btn cta-secondary">Try MathSketch 3D</a>
                 </div>
             </div>
         </header>
@@ -272,6 +272,46 @@
             </div>
         </section>
 
+        <section id="tools-section" class="section-modern">
+            <h2 class="section-title-modern">
+                <span class="title-line"></span>
+                <span class="title-text">Free Tools</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="tools-grid-modern">
+                <div class="tool-summary-card">
+                    <h3>MathSketch 3D</h3>
+                    <p>Enter equations with <code>x</code> and <code>y</code>, generate a 3D surface, and explore math visually. This tool also evaluates expressions and supports common math functions.</p>
+                    <ul>
+                        <li>Try formulas like <code>sin(x) * cos(y)</code>, <code>x*x - y*y</code>, or <code>sin(x) + cos(y)</code></li>
+                        <li>Interactive render using canvas projection</li>
+                        <li>Designed for fast experimentation and learning</li>
+                    </ul>
+                </div>
+                <div class="tool-panel-modern">
+                    <div class="tool-header">
+                        <div>
+                            <p class="tool-title">MathSketch 3D</p>
+                            <p class="tool-description">Plot a 3D surface from a simple math formula and inspect the result visually.</p>
+                        </div>
+                        <button id="tool-reset-button" type="button" class="project-btn">Reset</button>
+                    </div>
+                    <div class="tool-controls">
+                        <label for="math-equation-input">Equation</label>
+                        <input id="math-equation-input" type="text" value="sin(x) * cos(y)" placeholder="Enter equation, e.g. sin(x)*cos(y)" autocomplete="off">
+                        <div class="tool-actions">
+                            <button id="tool-plot-button" type="button" class="cta-btn cta-primary">Plot Surface</button>
+                            <button id="tool-eval-button" type="button" class="cta-btn cta-secondary">Evaluate</button>
+                        </div>
+                    </div>
+                    <div class="tool-output">
+                        <canvas id="math-tool-canvas" width="860" height="420" aria-label="3D math surface plot"></canvas>
+                        <div id="math-tool-response" class="tool-response">Enter a formula and click "Plot Surface" to render a 3D graph.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section-modern">
             <div class="cta-card-modern">
                 <h2>Open to AI/ML leadership and high-impact engineering roles</h2>
@@ -318,6 +358,7 @@
                 <button type="button" class="suggestion-chip" data-prompt="What AI projects has Nasim delivered?">AI Projects</button>
                 <button type="button" class="suggestion-chip" data-prompt="What is Nasim's experience with RAG and LLMs?">RAG & LLM Experience</button>
                 <button type="button" class="suggestion-chip" data-prompt="How can I contact Nasim for opportunities?">Contact</button>
+                <button type="button" class="suggestion-chip" data-prompt="How do I use the MathSketch 3D tool?">Math Tool</button>
             </div>
         </div>
     </div>

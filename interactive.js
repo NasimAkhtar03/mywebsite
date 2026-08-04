@@ -261,3 +261,287 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
+function createMathFunction(expression) {
+    const cleaned = expression.trim().replace(/\^/g, '**');
+    if (/[^0-9a-zA-Z_\+\-\*\/\^\.%(), \t\n]/.test(cleaned)) {
+        return null;
+    }
+
+    const helpers = {
+        sin: Math.sin,
+        cos: Math.cos,
+        tan: Math.tan,
+        asin: Math.asin,
+        acos: Math.acos,
+        atan: Math.atan,
+        sinh: Math.sinh,
+        cosh: Math.cosh,
+        tanh: Math.tanh,
+        sqrt: Math.sqrt,
+        abs: Math.abs,
+        exp: Math.exp,
+        log: Math.log,
+        pow: Math.pow,
+        min: Math.min,
+        max: Math.max,
+        PI: Math.PI,
+        E: Math.E,
+        floor: Math.floor,
+        ceil: Math.ceil,
+    };
+
+    try {
+        return new Function(
+            'x',
+            'y',
+            ...Object.keys(helpers),
+            `return ${cleaned};`
+        );
+    } catch (error) {
+        return null;
+    }
+}
+
+function evaluateMath(expression, x, y) {
+    const fn = createMathFunction(expression);
+    if (!fn) return NaN;
+    const helpers = {
+        sin: Math.sin,
+        cos: Math.cos,
+        tan: Math.tan,
+        asin: Math.asin,
+        acos: Math.acos,
+        atan: Math.atan,
+        sinh: Math.sinh,
+        cosh: Math.cosh,
+        tanh: Math.tanh,
+        sqrt: Math.sqrt,
+        abs: Math.abs,
+        exp: Math.exp,
+        log: Math.log,
+        pow: Math.pow,
+        min: Math.min,
+        max: Math.max,
+        PI: Math.PI,
+        E: Math.E,
+        floor: Math.floor,
+        ceil: Math.ceil,
+    };
+    try {
+        return fn(x, y, ...Object.values(helpers));
+    } catch (error) {
+        return NaN;
+    }
+}
+
+function renderMathSurface(canvas, expression, view = {}) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return false;
+
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const width = rect.width;
+    const height = rect.height;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const cols = 28;
+    const rows = 28;
+    const xMin = -4;
+    const xMax = 4;
+    const yMin = -4;
+    const yMax = 4;
+    const zScale = 1.4;
+    const angle = Math.PI / 6;
+    const cosA = Math.cos(angle);
+    const sinA = Math.sin(angle);
+    const zoom = Math.min(2.5, Math.max(0.35, Number(view.zoom) || 1));
+    const scale = Math.min(width, height) / 12 * zoom;
+    const cx = width / 2 + (Number(view.offsetX) || 0);
+    const cy = height / 2 + 20 + (Number(view.offsetY) || 0);
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = '#06070e';
+    ctx.fillRect(0, 0, width, height);
+
+    const points = [];
+    for (let row = 0; row <= rows; row += 1) {
+        const y = yMin + (row / rows) * (yMax - yMin);
+        const rowPoints = [];
+        for (let col = 0; col <= cols; col += 1) {
+            const x = xMin + (col / cols) * (xMax - xMin);
+            const z = evaluateMath(expression, x, y);
+            const value = Number.isFinite(z) ? z : 0;
+            rowPoints.push({ x, y, z: value });
+        }
+        points.push(rowPoints);
+    }
+
+    function project(point) {
+        return {
+            x: cx + (point.x - point.y) * cosA * scale,
+            y: cy + (point.x + point.y) * sinA * scale - point.z * zScale * (scale / 2),
+        };
+    }
+
+    for (let row = 0; row <= rows; row += 1) {
+        ctx.beginPath();
+        for (let col = 0; col <= cols; col += 1) {
+            const p = project(points[row][col]);
+            if (col === 0) ctx.moveTo(p.x, p.y);
+            else ctx.lineTo(p.x, p.y);
+        }
+        const hue = 220 - (row / rows) * 50;
+        ctx.strokeStyle = `hsla(${hue}, 80%, 72%, 0.65)`;
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
+    }
+
+    for (let col = 0; col <= cols; col += 1) {
+        ctx.beginPath();
+        for (let row = 0; row <= rows; row += 1) {
+            const p = project(points[row][col]);
+            if (row === 0) ctx.moveTo(p.x, p.y);
+            else ctx.lineTo(p.x, p.y);
+        }
+        const hue = 200 - (col / cols) * 40;
+        ctx.strokeStyle = `hsla(${hue}, 92%, 68%, 0.55)`;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+    }
+
+    ctx.beginPath();
+    const axisPoints = [
+        { x: -4, y: 0, z: 0 },
+        { x: 4, y: 0, z: 0 },
+        { x: 0, y: -4, z: 0 },
+        { x: 0, y: 4, z: 0 },
+    ];
+    axisPoints.forEach((pt, index) => {
+        const p = project(pt);
+        if (index === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+    });
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.lineWidth = 1.1;
+    ctx.stroke();
+
+    return true;
+}
+
+function attachMathSketchControls() {
+    const canvas = document.getElementById('math-tool-canvas');
+    const equationInput = document.getElementById('math-equation-input');
+    const plotButton = document.getElementById('tool-plot-button');
+    const evalButton = document.getElementById('tool-eval-button');
+    const resetButton = document.getElementById('tool-reset-button');
+    const response = document.getElementById('math-tool-response');
+
+    if (!canvas || !equationInput || !plotButton || !evalButton || !resetButton || !response) {
+        return;
+    }
+
+    const defaultExpression = 'sin(x) * cos(y)';
+    const viewState = {
+        zoom: 1,
+        offsetX: 0,
+        offsetY: 0,
+    };
+
+    const updateMessage = (text) => {
+        response.textContent = text;
+    };
+
+    const plotCurrentExpression = () => {
+        const expression = equationInput.value.trim() || defaultExpression;
+        updateMessage('Rendering MathSketch 3D surface...');
+        const success = renderMathSurface(canvas, expression, viewState);
+        if (success) {
+            updateMessage(`Rendered MathSketch 3D surface for: ${expression}`);
+        } else {
+            updateMessage('Unable to render that expression. Please use only safe math functions like sin, cos, tan, sqrt, log, exp, abs, min, max, and simple operators.');
+        }
+    };
+
+    plotButton.addEventListener('click', plotCurrentExpression);
+
+    evalButton.addEventListener('click', () => {
+        const expression = equationInput.value.trim() || defaultExpression;
+        const value = evaluateMath(expression, 1, 1);
+        if (Number.isFinite(value)) {
+            updateMessage(`MathSketch eval at x=1, y=1 → ${Number(value.toFixed(6))}`);
+        } else {
+            updateMessage('The expression could not be evaluated. Please check syntax and allowed functions.');
+        }
+    });
+
+    resetButton.addEventListener('click', () => {
+        equationInput.value = defaultExpression;
+        viewState.zoom = 1;
+        viewState.offsetX = 0;
+        viewState.offsetY = 0;
+        updateMessage('Equation reset. Click plot to render MathSketch 3D again.');
+        plotCurrentExpression();
+    });
+
+    let dragging = false;
+    let lastPointerX = 0;
+    let lastPointerY = 0;
+
+    const onStartDrag = (event) => {
+        dragging = true;
+        const point = event.touches ? event.touches[0] : event;
+        lastPointerX = point.clientX;
+        lastPointerY = point.clientY;
+        canvas.style.cursor = 'grabbing';
+    };
+
+    const onDrag = (event) => {
+        if (!dragging) return;
+        const point = event.touches ? event.touches[0] : event;
+        const dx = point.clientX - lastPointerX;
+        const dy = point.clientY - lastPointerY;
+        lastPointerX = point.clientX;
+        lastPointerY = point.clientY;
+        viewState.offsetX += dx;
+        viewState.offsetY += dy;
+        renderMathSurface(canvas, equationInput.value.trim() || defaultExpression, viewState);
+    };
+
+    const onEndDrag = () => {
+        dragging = false;
+        canvas.style.cursor = 'grab';
+    };
+
+    canvas.addEventListener('mousedown', onStartDrag);
+    canvas.addEventListener('touchstart', onStartDrag, { passive: true });
+    window.addEventListener('mousemove', onDrag);
+    window.addEventListener('touchmove', onDrag, { passive: true });
+    window.addEventListener('mouseup', onEndDrag);
+    window.addEventListener('touchend', onEndDrag);
+
+    canvas.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        const delta = -event.deltaY * 0.001;
+        viewState.zoom = Math.min(2.5, Math.max(0.35, viewState.zoom + delta));
+        renderMathSurface(canvas, equationInput.value.trim() || defaultExpression, viewState);
+    }, { passive: false });
+
+    window.addEventListener('resize', () => {
+        if (canvas.dataset.lastExpression) {
+            renderMathSurface(canvas, canvas.dataset.lastExpression, viewState);
+        }
+    });
+
+    equationInput.addEventListener('input', () => {
+        canvas.dataset.lastExpression = equationInput.value.trim() || defaultExpression;
+    });
+
+    equationInput.value = defaultExpression;
+    canvas.dataset.lastExpression = defaultExpression;
+    plotCurrentExpression();
+}
+
+attachMathSketchControls();
+
